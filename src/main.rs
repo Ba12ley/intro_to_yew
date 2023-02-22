@@ -1,5 +1,8 @@
-mod router;
+use intro_to_yew::App;
+
+
 
 fn main() {
-    println!("Hello, world!");
+    yew::Renderer::<App>::new().render();
 }
+
