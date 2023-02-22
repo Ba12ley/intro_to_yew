@@ -15,6 +15,7 @@ pub fn app() -> Html {
         title: "Hello World".to_owned(), // to_owned() converts a string literal to a string, where as to_string() converts a string to a string
         body: "This is a blog post".to_owned(),
     };
+    let list_of_links = vec!["Link 1", "Link 2", "Link 3", "Link 4"];
 
     log!(log_test);
     // log!(blog.title);
@@ -30,9 +31,10 @@ pub fn app() -> Html {
             <h1 style="color: red">{ "Hello World!" }</h1>
         </div>
         <div>
+        <h2>{ "For Loop" }</h2>
             <ul style="color: blue">
-                <li>{ "Link 1" }</li>
-                <li>{ "Link 2" }</li>
+                                                // || is a closure, it is a function that can be passed around
+                { for list_of_links.iter().map(|link| html! { <li><a href="">{ link }</a></li> }) } //using iter() to iterate over the vector and not taking ownership of the vector.  using map to map the vector to html
             </ul>
         </div>
         <div>
