@@ -1,6 +1,10 @@
 use yew::prelude::*;
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
+use stylist::{style, yew::styled_component};
+
+mod components;
+use components::common_all::main_title::{MainTitle, Color};
 
 #[derive(Serialize,Deserialize)]
 struct BlogPost {
@@ -8,8 +12,12 @@ struct BlogPost {
     body: String,
 }
 
+
+
 #[function_component(App)] // this is a macro that converts the function into a component
+// #[styled_component(App)] // this is a macro that converts the function into a component
 pub fn app() -> Html {
+
     let log_test = "Logged to console";
     let blog = BlogPost {
         title: "Hello World".to_owned(), // to_owned() converts a string literal to a string, where as to_string() converts a string to a string
@@ -25,9 +33,12 @@ pub fn app() -> Html {
 
     html! { // This is a macro that converts the html into a virtual dom
         <> // This is a fragment, fragments are used to return multiple elements
+
         <div class="can_add_class">{ "Can add class" }</div>
         <div class={html_class_var}>{ "Can use variable in attribute" }</div>
         <div>
+            <MainTitle title="Properties added with Enum to Main Title" color={Color::Latest} />
+        <p>{"Main Title used from a component"}</p>
             <h1 style="color: red">{ "Hello World!" }</h1>
         </div>
         <div>
@@ -58,6 +69,7 @@ pub fn app() -> Html {
         }
 
         </div>
+
         </>
     }
 }
