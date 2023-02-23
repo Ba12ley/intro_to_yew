@@ -5,6 +5,7 @@ use stylist::{style, yew::styled_component};
 
 mod components;
 use components::common_all::main_title::{MainTitle, Color};
+use components::page_components::form::Form;
 
 #[derive(Serialize,Deserialize)]
 struct BlogPost {
@@ -31,13 +32,14 @@ pub fn app() -> Html {
    // log!(serde_json::to_string_pretty(&blog).unwrap());
     let html_class_var = "variable_class";
 
+    let main_title_onload = Callback::from(|message: String| log!(message));
     html! { // This is a macro that converts the html into a virtual dom
         <> // This is a fragment, fragments are used to return multiple elements
 
         <div class="can_add_class">{ "Can add class" }</div>
         <div class={html_class_var}>{ "Can use variable in attribute" }</div>
         <div>
-            <MainTitle title="Properties added with Enum to Main Title" color={Color::Latest} />
+            <MainTitle title="Properties added with Enum to Main Title" color={Color::Latest} onload={main_title_onload}/>
         <p>{"Main Title used from a component"}</p>
             <h1 style="color: red">{ "Hello World!" }</h1>
         </div>
@@ -69,7 +71,7 @@ pub fn app() -> Html {
         }
 
         </div>
-
+    <Form />
         </>
     }
 }

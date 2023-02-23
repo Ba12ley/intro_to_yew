@@ -6,6 +6,7 @@ use yew::prelude::*;
 pub struct Props {
     pub title: String,
     pub color: Color,
+    pub onload: Callback<String>,
 }
 #[derive(PartialEq)]
 pub enum Color {
@@ -26,6 +27,7 @@ impl Color{
 
 #[function_component(MainTitle)] // this is a macro that converts the function into a component
 pub fn main_title(props: &Props) -> Html {
+
     let stylesheet = style!(r#"
         .latest {
             color: green;
@@ -36,6 +38,7 @@ pub fn main_title(props: &Props) -> Html {
             color: red;
             }
         "#).unwrap();
+    props.onload.emit("Main Title Loaded".to_owned());
     html! {
         <div class={stylesheet}>
             <h1 class={props.color.to_string()}>{&props.title}</h1>
