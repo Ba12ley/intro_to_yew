@@ -7,6 +7,7 @@ mod components;
 use components::common_all::main_title::{MainTitle, Color};
 use components::page_components::form::Form;
 
+
 #[derive(Serialize,Deserialize)]
 struct BlogPost {
     title: String,
