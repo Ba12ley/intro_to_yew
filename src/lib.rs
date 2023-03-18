@@ -8,7 +8,7 @@ use components::common_all::main_title::{MainTitle, Color};
 use components::page_components::form::Form;
 
 
-#[derive(Serialize,Deserialize)]
+#[derive(Serialize,Deserialize)] // derive is used to add traits to a struct, these are from the serde crate
 struct BlogPost {
     title: String,
     body: String,
@@ -58,7 +58,7 @@ pub fn app() -> Html {
         <h2>{ "IF" }</h2>
         if &blog.title == "Hello World" {
                 <div>
-                    <p> {"if &blog.title == Hello World"} </p>
+                    // <p> {"if &blog.title == Hello World"} </p>
                     <h3>{ "Title: " }{ blog.title }</h3>
                 </div>
 
